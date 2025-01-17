@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:places/screens/settings.dart';
-import 'package:places/theme/color_schemes.dart';
 
 class PlacesHome extends StatelessWidget {
-  const PlacesHome({super.key, required this.onThemeTap});
-
-  final Function(ThemeName) onThemeTap;
+  const PlacesHome({
+    super.key,
+  });
 
   void _openSettings(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Settings(onTap: onThemeTap),
+        builder: (context) => const Settings(),
       ),
     );
   }

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:places/theme/color_schemes.dart';
 
-class Settings extends StatelessWidget {
-  const Settings({super.key, required this.onTap});
+import '../providers/settings_provider.dart';
 
-  final Function(ThemeName) onTap;
+class Settings extends ConsumerWidget {
+  const Settings({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeHandler = ref.watch(themeProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
@@ -36,13 +40,17 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     themeItem.value.identifier,
-                    style: const TextStyle(color: Colors.white),
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: themeItem.value.colorScheme.light.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onTap: () {
-                    onTap(themeItem.key);
+                    // onTap(themeItem.key);
+                    themeHandler.setNewTheme(themeItem.key);
                     Navigator.pop(context);
                   },
                 ),

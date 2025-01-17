@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppTheme {
   static lightTheme(ColorScheme colorScheme) {
     return ThemeData(
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.primary,
-        titleTextStyle: TextStyle(
+        titleTextStyle: GoogleFonts.poppins(
           color: colorScheme.onPrimary,
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: FontWeight.w600,
         ),
         iconTheme: IconThemeData(
-          color: colorScheme.surface,
+          color: colorScheme.onPrimary,
         ),
         actionsIconTheme: IconThemeData(
           color: colorScheme.surface,
@@ -20,8 +21,9 @@ abstract class AppTheme {
       scaffoldBackgroundColor: colorScheme.surface,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: colorScheme.primary,
-        foregroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onPrimary,
       ),
+      textTheme: textTheme(colorScheme.onPrimary),
     );
   }
 
@@ -29,9 +31,9 @@ abstract class AppTheme {
     return ThemeData(
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.primary,
-        titleTextStyle: TextStyle(
+        titleTextStyle: GoogleFonts.poppins(
           color: colorScheme.onPrimary,
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: FontWeight.w600,
         ),
         iconTheme: IconThemeData(
@@ -48,6 +50,96 @@ abstract class AppTheme {
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
+      ),
+      textTheme: textTheme(colorScheme.onPrimary),
+    );
+  }
+
+  static textTheme(Color fontColor) {
+    return TextTheme(
+      //Display styles
+      displayLarge: GoogleFonts.poppins(
+        fontSize: 57,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+      displayMedium: GoogleFonts.poppins(
+        fontSize: 45,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+      displaySmall: GoogleFonts.poppins(
+        fontSize: 36,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+
+      //Headline styles
+      headlineLarge: GoogleFonts.poppins(
+        fontSize: 32,
+        fontWeight: FontWeight.w600,
+        color: fontColor,
+      ),
+      headlineMedium: GoogleFonts.poppins(
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+      headlineSmall: GoogleFonts.poppins(
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+
+      //Title styles
+      titleLarge: GoogleFonts.poppins(
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+        color: fontColor,
+      ),
+      titleMedium: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+      titleSmall: GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+
+      //Body text styles
+      bodyLarge: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+      bodySmall: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: fontColor,
+      ),
+
+      //Label styles
+      labelLarge: GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+      labelMedium: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
+      ),
+      labelSmall: GoogleFonts.poppins(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        color: fontColor,
       ),
     );
   }

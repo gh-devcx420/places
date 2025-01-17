@@ -4,6 +4,7 @@ import 'package:places/models/theme_models.dart';
 enum ThemeName {
   limeForest,
   oceanBlue,
+  royalVelvet,
 }
 
 Map<ThemeName, AppThemeItem> placesThemes = {
@@ -15,15 +16,19 @@ Map<ThemeName, AppThemeItem> placesThemes = {
     colorScheme: AppColorScheme.oceanBlue,
     identifier: 'Ocean Depths',
   ),
+  ThemeName.royalVelvet: AppThemeItem(
+    colorScheme: AppColorScheme.royalVelvet,
+    identifier: 'Royal Velvet',
+  ),
 };
 
 abstract class AppColorScheme {
   static ThemeColorScheme limeForest = const ThemeColorScheme(
     light: ColorScheme(
       brightness: Brightness.light,
-      primary: Color(0xFF8EC649),
+      primary: Color(0xFF9ED756),
       onPrimary: Color(0xFFFFFFFF),
-      primaryContainer: Color(0xFFABE065),
+      primaryContainer: Color(0xFFD2F5A7),
       onPrimaryContainer: Color(0xFF1A1C18),
       secondary: Color(0xFF006641),
       onSecondary: Color(0xFFFFFFFF),
@@ -33,7 +38,7 @@ abstract class AppColorScheme {
       onTertiary: Color(0xFF000000),
       tertiaryContainer: Color(0xFFFFE563),
       onTertiaryContainer: Color(0xFF1A1600),
-      surface: Color(0xFFF3FFE7),
+      surface: Color(0xFFF5FFEC),
       onSurface: Color(0xFF1A1C18),
       surfaceDim: Color(0xFFDBDDD7),
       surfaceBright: Color(0xFFFCFDF6),
@@ -80,55 +85,31 @@ abstract class AppColorScheme {
   static ThemeColorScheme oceanBlue = const ThemeColorScheme(
     light: ColorScheme(
       brightness: Brightness.light,
-      primary: Color(0xFF6EB4F1),
-      // Light blue from palette
+      primary: Color(0xFF79BFFF),
       onPrimary: Color(0xFFFFFFFF),
-      // Deep blue for contrast
-      primaryContainer: Color(0xFFB0C4DE),
-      // Lightest blue from palette
+      primaryContainer: Color(0xFFA0C4F1),
       onPrimaryContainer: Color(0xFF002952),
-      // Darker shade for contrast
       secondary: Color(0xFF002952),
-      // Medium-light blue from palette
       onSecondary: Color(0xFFFFFFFF),
-      // Dark blue for contrast
       secondaryContainer: Color(0xFFD8E6F7),
-      // Very light blue
       onSecondaryContainer: Color(0xFF002952),
-      // Dark blue for contrast
       tertiary: Color(0xFF89A7D3),
-      // Medium-light blue-grey
       onTertiary: Color(0xFF002952),
-      // Dark blue for contrast
       tertiaryContainer: Color(0xFFE5EEF9),
-      // Very light blue-grey
       onTertiaryContainer: Color(0xFF002952),
-      // Dark blue for contrast
-      surface: Color(0xFFFBFCFE),
-      // Nearly white
+      surface: Color(0xFFE9F0FF),
       onSurface: Color(0xFF001B3D),
-      // Very dark blue
       surfaceDim: Color(0xFFE1E2EC),
-      // Dimmed surface
       surfaceBright: Color(0xFFFBFCFF),
-      // Bright surface
       error: Color(0xFFBA1A1A),
-      // Standard error red
       onError: Color(0xFFFFFFFF),
-      // White for contrast
       errorContainer: Color(0xFFFFDAD6),
-      // Light error container
       onErrorContainer: Color(0xFF410002),
-      // Dark error text
       outline: Color(0xFF74777F),
-      // Subtle outline
       shadow: Color(0xFF000000),
-      // Standard shadow
       inverseSurface: Color(0xFF002B5B),
-      // Darker blue
       onInverseSurface: Color(0xFFE5E5E5),
-      // Light grey
-      inversePrimary: Color(0xFF003366), // Deep blue from palette
+      inversePrimary: Color(0xFF003366),
     ),
     dark: ColorScheme(
       brightness: Brightness.dark,
@@ -157,6 +138,65 @@ abstract class AppColorScheme {
       inverseSurface: Color(0xFFE5E5E5),
       onInverseSurface: Color(0xFF001B3D),
       inversePrimary: Color(0xFF6EB4F1),
+    ),
+  );
+
+  static ThemeColorScheme royalVelvet = const ThemeColorScheme(
+    light: ColorScheme(
+      brightness: Brightness.light,
+      primary: Color(0xFFC787FD),
+      onPrimary: Color(0xFFFFFFFF),
+      primaryContainer: Color(0xFFDBB8F3),
+      onPrimaryContainer: Color(0xFF1A0A1A),
+      secondary: Color(0xFF1A0A1A),
+      onSecondary: Color(0xFFFFFFFF),
+      secondaryContainer: Color(0xFFE5D5F0),
+      onSecondaryContainer: Color(0xFF1A0A1A),
+      tertiary: Color(0xFF945EB3),
+      onTertiary: Color(0xFF1A0A1A),
+      tertiaryContainer: Color(0xFFF0E6F5),
+      onTertiaryContainer: Color(0xFF1A0A1A),
+      surface: Color(0xFFFBF2FF),
+      onSurface: Color(0xFF2A0D2A),
+      surfaceDim: Color(0xFFEDE3F3),
+      surfaceBright: Color(0xFFFDF8FF),
+      error: Color(0xFFBA1A1A),
+      onError: Color(0xFFFFFFFF),
+      errorContainer: Color(0xFFFFDAD6),
+      onErrorContainer: Color(0xFF410002),
+      outline: Color(0xFF847389),
+      shadow: Color(0xFF000000),
+      inverseSurface: Color(0xFF2D1533),
+      onInverseSurface: Color(0xFFE5E5E5),
+      inversePrimary: Color(0xFF68217A),
+    ),
+    dark: ColorScheme(
+      brightness: Brightness.dark,
+      primary: Color(0xFF3C1346),
+      onPrimary: Color(0xFFE5D5F0),
+      primaryContainer: Color(0xFF1A0A1A),
+      onPrimaryContainer: Color(0xFFE5D5F0),
+      secondary: Color(0xFF945EB3),
+      onSecondary: Color(0xFFE5D5F0),
+      secondaryContainer: Color(0xFF4A1657),
+      onSecondaryContainer: Color(0xFFE8DBF0),
+      tertiary: Color(0xFF582D68),
+      onTertiary: Color(0xFFE5D5F0),
+      tertiaryContainer: Color(0xFF3D1F47),
+      onTertiaryContainer: Color(0xFFE8DBF0),
+      surface: Color(0xFF000000),
+      onSurface: Color(0xFFE8E2F0),
+      surfaceDim: Color(0xFF1A0A1A),
+      surfaceBright: Color(0xFF2D1533),
+      error: Color(0xFFFFB4AB),
+      onError: Color(0xFF690005),
+      errorContainer: Color(0xFF93000A),
+      onErrorContainer: Color(0xFFFFB4AB),
+      outline: Color(0xFF998DA1),
+      shadow: Color(0xFF000000),
+      inverseSurface: Color(0xFFF4E6FF),
+      onInverseSurface: Color(0xFF1A0A1A),
+      inversePrimary: Color(0xFFB68FD7),
     ),
   );
 }
