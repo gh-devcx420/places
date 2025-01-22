@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppTheme {
   static lightTheme(ColorScheme colorScheme) {
     return ThemeData(
+      colorScheme: colorScheme,
+      useMaterial3: true,
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.primary,
         titleTextStyle: GoogleFonts.poppins(
@@ -23,12 +25,51 @@ abstract class AppTheme {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
       ),
-      textTheme: textTheme(colorScheme.onPrimary),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionColor: colorScheme.primaryContainer,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.primary,
+            width: 1.5,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.primary,
+            width: 1.5,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.error,
+            width: 1.5,
+          ),
+        ),
+        prefixIconColor: colorScheme.primary,
+        filled: true,
+        fillColor: colorScheme.surfaceDim,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          foregroundColor: colorScheme.onPrimary,
+          backgroundColor: colorScheme.primary,
+        ),
+      ),
+      textTheme: textTheme(
+        colorScheme.onPrimary,
+      ),
     );
   }
 
   static darkTheme(ColorScheme colorScheme) {
     return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.primary,
         titleTextStyle: GoogleFonts.poppins(
@@ -51,7 +92,44 @@ abstract class AppTheme {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
       ),
-      textTheme: textTheme(colorScheme.onPrimary),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionColor: colorScheme.secondaryContainer,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.onPrimary,
+            width: 1.5,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.onPrimary,
+            width: 1.5,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorScheme.error,
+            width: 1.5,
+          ),
+        ),
+        prefixIconColor: colorScheme.primary,
+        filled: true,
+        fillColor: colorScheme.surfaceDim,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          foregroundColor: colorScheme.onPrimary,
+          backgroundColor: colorScheme.primary,
+        ),
+      ),
+      textTheme: textTheme(
+        colorScheme.onPrimary,
+      ),
     );
   }
 

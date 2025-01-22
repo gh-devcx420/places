@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/screens/add_place.dart';
 import 'package:places/screens/settings.dart';
 
 class PlacesHome extends StatelessWidget {
@@ -10,6 +11,14 @@ class PlacesHome extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const Settings(),
+      ),
+    );
+  }
+
+  void _addPlace(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const AddPlaceScreen(),
       ),
     );
   }
@@ -27,11 +36,13 @@ class PlacesHome extends StatelessWidget {
               _openSettings(context);
             },
             icon: const Icon(Icons.settings),
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _addPlace(context);
+        },
         child: const Icon(Icons.add),
       ),
       body: Container(),

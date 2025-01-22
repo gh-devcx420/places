@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeSettingsNotifier extends StateNotifier<ThemeName> {
   final SharedPreferences prefs;
 
-  ThemeSettingsNotifier(this.prefs) : super(ThemeName.limeForest) {
+  ThemeSettingsNotifier(this.prefs) : super(ThemeName.forestCanopy) {
     _loadThemePreferences();
   }
 
@@ -16,7 +16,7 @@ class ThemeSettingsNotifier extends StateNotifier<ThemeName> {
           'CurrentTheme', placesThemes[currentTheme]!.identifier);
     } else {
       prefs.setString(
-          'CurrentTheme', placesThemes[ThemeName.limeForest]!.identifier);
+          'CurrentTheme', placesThemes[ThemeName.forestCanopy]!.identifier);
     }
   }
 
@@ -24,7 +24,7 @@ class ThemeSettingsNotifier extends StateNotifier<ThemeName> {
     String? storedThemeId = prefs.getString('CurrentTheme');
 
     if (storedThemeId == null) {
-      setNewTheme(ThemeName.limeForest);
+      setNewTheme(ThemeName.forestCanopy);
       return;
     }
 
@@ -34,7 +34,7 @@ class ThemeSettingsNotifier extends StateNotifier<ThemeName> {
       }).key;
       setNewTheme(currentTheme);
     } catch (e) {
-      setNewTheme(ThemeName.limeForest);
+      setNewTheme(ThemeName.forestCanopy);
     }
   }
 
