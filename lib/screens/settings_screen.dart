@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:places/theme/color_schemes.dart';
 
 import '../providers/settings_provider.dart';
@@ -29,7 +30,7 @@ class Settings extends ConsumerWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      themeItem.value.colorScheme.light.secondary,
+                      themeItem.value.colorScheme.dark.secondaryContainer,
                       themeItem.value.colorScheme.light.primary,
                     ],
                     begin: Alignment.topLeft,
@@ -41,9 +42,18 @@ class Settings extends ConsumerWidget {
                   title: Text(
                     themeItem.value.identifier,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: themeItem.value.colorScheme.light.primary,
+                          color: themeItem
+                              .value.colorScheme.light.secondaryContainer,
                           fontWeight: FontWeight.w600,
                         ),
+                  ),
+                  trailing: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Iconify(
+                      themeItem.value.themeIcon,
+                      color:
+                          themeItem.value.colorScheme.light.secondaryContainer,
+                    ),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),

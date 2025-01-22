@@ -13,9 +13,11 @@ class ThemeColorScheme {
 class AppThemeItem {
   final String identifier;
   final ThemeColorScheme colorScheme;
+  final String themeIcon;
 
   const AppThemeItem({
     required this.identifier,
     required this.colorScheme,
+    required this.themeIcon,
   });
 }

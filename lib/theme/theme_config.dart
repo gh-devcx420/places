@@ -51,6 +51,15 @@ abstract class AppTheme {
         filled: true,
         fillColor: colorScheme.surfaceDim,
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          foregroundColor: colorScheme.primary,
+          backgroundColor: Colors.transparent,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -59,6 +68,33 @@ abstract class AppTheme {
           foregroundColor: colorScheme.onPrimary,
           backgroundColor: colorScheme.primary,
         ),
+      ),
+      listTileTheme: ListTileThemeData(
+        tileColor: colorScheme.primary,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      dialogTheme: DialogTheme(
+        titleTextStyle: GoogleFonts.poppins(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          color: colorScheme.primary,
+        ),
+        contentTextStyle: GoogleFonts.poppins(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: colorScheme.primary,
+        ),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        contentTextStyle: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: colorScheme.onPrimary,
+        ),
+        backgroundColor: colorScheme.primary,
       ),
       textTheme: textTheme(
         colorScheme.onPrimary,
@@ -118,6 +154,15 @@ abstract class AppTheme {
         filled: true,
         fillColor: colorScheme.surfaceDim,
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          foregroundColor: colorScheme.onPrimary,
+          backgroundColor: Colors.transparent,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -126,6 +171,33 @@ abstract class AppTheme {
           foregroundColor: colorScheme.onPrimary,
           backgroundColor: colorScheme.primary,
         ),
+      ),
+      listTileTheme: ListTileThemeData(
+        tileColor: colorScheme.primary,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      dialogTheme: DialogTheme(
+        titleTextStyle: GoogleFonts.poppins(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          color: colorScheme.onPrimary,
+        ),
+        contentTextStyle: GoogleFonts.poppins(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: colorScheme.onPrimary,
+        ),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        contentTextStyle: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: colorScheme.onPrimary,
+        ),
+        backgroundColor: colorScheme.primary,
       ),
       textTheme: textTheme(
         colorScheme.onPrimary,

@@ -87,7 +87,7 @@ class _PlacesTextfieldState extends State<PlacesTextfield> {
         hintText: 'Place Title',
         hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: Theme.of(context).colorScheme.outline,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
       ),
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
