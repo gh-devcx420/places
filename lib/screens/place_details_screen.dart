@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants.dart';
 import 'package:places/models/places_model.dart';
 import 'package:places/widgets/places_alert_dialogue.dart';
 
@@ -69,6 +70,31 @@ class PlaceDetails extends StatelessWidget {
             icon: const Icon(Icons.delete),
           ),
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(kScaffoldBodyPadding),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(8),
+                topLeft: Radius.circular(8),
+                bottomRight: Radius.circular(30),
+                bottomLeft: Radius.circular(30)),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.primary,
+              width: borderThickness,
+            ),
+          ),
+          alignment: Alignment.center,
+          clipBehavior: Clip.hardEdge,
+          child: Image.file(
+            currentPlace.placeImage,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+        ),
       ),
     );
   }

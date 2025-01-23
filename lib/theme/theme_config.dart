@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:places/constants.dart';
 
 abstract class AppTheme {
   static lightTheme(ColorScheme colorScheme) {
@@ -32,19 +33,19 @@ abstract class AppTheme {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.primary,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.primary,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.error,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         prefixIconColor: colorScheme.primary,
@@ -135,19 +136,19 @@ abstract class AppTheme {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.onPrimary,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.onPrimary,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: colorScheme.error,
-            width: 1.5,
+            width: borderThickness,
           ),
         ),
         prefixIconColor: colorScheme.primary,
