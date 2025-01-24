@@ -13,13 +13,19 @@ class PlaceDetails extends StatelessWidget {
   final Place currentPlace;
   final VoidCallback onDelete;
 
+  String get locationPreview {
+    final lat = currentPlace.placeLocation.latitude;
+    final lng = currentPlace.placeLocation.longitude;
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=18&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=AIzaSyCYfHmKomCigkW-1MCxKyuEMPgQPUbwN6M';
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          currentPlace.placeTitle,
+        title: const Text(
+          'Place Details',
         ),
         titleSpacing: 0,
         actions: [
@@ -73,26 +79,132 @@ class PlaceDetails extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(kScaffoldBodyPadding),
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(8),
-                topLeft: Radius.circular(8),
-                bottomRight: Radius.circular(30),
-                bottomLeft: Radius.circular(30)),
-            border: Border.all(
-              color: Theme.of(context).colorScheme.primary,
-              width: borderThickness,
-            ),
-          ),
-          alignment: Alignment.center,
-          clipBehavior: Clip.hardEdge,
-          child: Image.file(
-            currentPlace.placeImage,
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 9 / 16,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(kBorderRadius),
+                      child: Image.file(
+                        currentPlace.placeImage,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        bottomRight: Radius.circular(kBorderRadius),
+                        bottomLeft: Radius.circular(kBorderRadius),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withOpacity(0.4),
+                              Colors.transparent,
+                            ],
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 2, 8, 4),
+                          child: Text(
+                            currentPlace.placeTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primaryContainer,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              vGap10,
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 90,
+                      width: 90,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: kBorderThickness,
+                        ),
+                        borderRadius: BorderRadius.circular(kBorderRadius),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(kBorderRadius - 2),
+                        child: Image.network(
+                          locationPreview,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                    hGap10,
+                    Expanded(
+                      child: RichText(
+                        text: TextSpan(
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Address:  ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: currentPlace.placeLocation.address,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:places/constants.dart';
 import 'package:places/models/places_model.dart';
 import 'package:places/widgets/places_image_input.dart';
+import 'package:places/widgets/places_location_input.dart';
 import 'package:places/widgets/places_textfield.dart';
 
 import '../providers/places_provider.dart';
@@ -20,10 +21,11 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   TextEditingController placesController = TextEditingController();
   FocusNode placesFocusNode = FocusNode();
   File? receivedImage;
+  PlaceLocation? receivedLocation;
 
   bool validateInputs() {
     if (placesController.text.isEmpty &&
-        placesController.text.trim().length <= 1 &&
+            placesController.text.trim().length <= 1 ||
         receivedImage == null) {
       return false;
     }
@@ -34,6 +36,10 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
     receivedImage = pickedImage;
   }
 
+  void pickPlaceLocation(PlaceLocation chosenLocation) {
+    receivedLocation = chosenLocation;
+  }
+
   void addNewPlace() {
     if (validateInputs()) {
       var placesListHandler = ref.read(userPlacesProvider.notifier);
@@ -41,6 +47,7 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
         Place(
           placeTitle: placesController.text,
           placeImage: receivedImage!,
+          placeLocation: receivedLocation!,
         ),
       );
       Navigator.of(context).pop();
@@ -56,24 +63,30 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(kScaffoldBodyPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            PlacesTextfield(
-              textFieldController: placesController,
-              textFieldFocusNode: placesFocusNode,
-              activeFieldIcon: const Icon(
-                Icons.text_snippet,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              PlacesTextfield(
+                textFieldController: placesController,
+                textFieldFocusNode: placesFocusNode,
+                activeFieldIcon: const Icon(
+                  Icons.text_snippet,
+                ),
+                inactiveFieldIcon: const Icon(
+                  Icons.text_snippet_outlined,
+                ),
               ),
-              inactiveFieldIcon: const Icon(
-                Icons.text_snippet_outlined,
+              vGap10,
+              ImageInput(
+                onPickedImage: pickPlaceImage,
               ),
-            ),
-            vGap20,
-            ImageInput(
-              onPickedImage: pickPlaceImage,
-            ),
-          ],
+              vGap10,
+              LocationInput(
+                onPickLocation: pickPlaceLocation,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

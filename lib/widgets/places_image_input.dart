@@ -43,13 +43,16 @@ class _ImageInputState extends State<ImageInput> {
     );
 
     if (_selectedImage != null) {
-      containerContent = InkWell(
-        onTap: _takePicture,
-        child: Image.file(
-          _selectedImage!,
-          fit: BoxFit.cover,
-          height: double.infinity,
-          width: double.infinity,
+      containerContent = ClipRRect(
+        borderRadius: BorderRadius.circular(kBorderRadius - 2),
+        child: InkWell(
+          onTap: _takePicture,
+          child: Image.file(
+            _selectedImage!,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+          ),
         ),
       );
     }
@@ -57,11 +60,12 @@ class _ImageInputState extends State<ImageInput> {
       height: 250,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(kBorderRadius),
         border: Border.all(
           color: Theme.of(context).colorScheme.primary,
-          width: borderThickness,
+          width: kBorderThickness,
         ),
+        color: Theme.of(context).colorScheme.surfaceDim,
       ),
       alignment: Alignment.center,
       clipBehavior: Clip.hardEdge,

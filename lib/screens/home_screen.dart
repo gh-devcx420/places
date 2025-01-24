@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:places/constants.dart';
 import 'package:places/models/places_model.dart';
 import 'package:places/providers/places_provider.dart';
 import 'package:places/screens/add_place_screen.dart';
@@ -73,29 +74,55 @@ class PlacesHome extends ConsumerWidget {
 
     if (userPlaceListWatcher.isNotEmpty) {
       bodyContent = ListView(
-        children: userPlaceListWatcher.map((listItem) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: InkWell(
-              onTap: () {
-                _showPlaceDetails(context, listItem, ref);
-              },
-              child: ListTile(
-                title: Text(
-                  listItem.placeTitle,
-                  style: Theme.of(context).textTheme.titleMedium,
+        children: userPlaceListWatcher.map(
+          (listItem) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: InkWell(
+                onTap: () {
+                  _showPlaceDetails(context, listItem, ref);
+                },
+                child: ListTile(
+                  leading: Container(
+                    width: 60,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        width: kBorderThickness,
+                      ),
+                      borderRadius: BorderRadius.circular(kBorderRadius),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(kBorderRadius - 2),
+                      child: Image.file(
+                        listItem.placeImage,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.only(left: 6),
+                  visualDensity: const VisualDensity(horizontal: -4.0),
+                  title: Text(
+                    listItem.placeTitle,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  subtitle: Text(
+                    '${listItem.placeLocation.areaName}.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ),
               ),
-            ),
-          );
-        }).toList(),
+            );
+          },
+        ).toList(),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Places',
+          'My Places',
         ),
         actions: [
           IconButton(

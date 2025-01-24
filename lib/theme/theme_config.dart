@@ -31,21 +31,24 @@ abstract class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
             color: colorScheme.primary,
-            width: borderThickness,
+            width: kBorderThickness,
           ),
         ),
         focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
             color: colorScheme.primary,
-            width: borderThickness,
+            width: kBorderThickness,
           ),
         ),
         errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
             color: colorScheme.error,
-            width: borderThickness,
+            width: kBorderThickness,
           ),
         ),
         prefixIconColor: colorScheme.primary,
@@ -55,7 +58,7 @@ abstract class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(kBorderRadius),
           ),
           foregroundColor: colorScheme.primary,
           backgroundColor: Colors.transparent,
@@ -64,7 +67,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(kBorderRadius),
           ),
           foregroundColor: colorScheme.onPrimary,
           backgroundColor: colorScheme.primary,
@@ -72,9 +75,8 @@ abstract class AppTheme {
       ),
       listTileTheme: ListTileThemeData(
         tileColor: colorScheme.primary,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(kBorderRadius),
         ),
       ),
       dialogTheme: DialogTheme(
@@ -134,21 +136,24 @@ abstract class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
-            color: colorScheme.onPrimary,
-            width: borderThickness,
+            color: colorScheme.primary,
+            width: kBorderThickness,
           ),
         ),
         focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
-            color: colorScheme.onPrimary,
-            width: borderThickness,
+            color: colorScheme.primary,
+            width: kBorderThickness,
           ),
         ),
         errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(kBorderRadius),
           borderSide: BorderSide(
             color: colorScheme.error,
-            width: borderThickness,
+            width: kBorderThickness,
           ),
         ),
         prefixIconColor: colorScheme.primary,
@@ -158,7 +163,7 @@ abstract class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(kBorderRadius),
           ),
           foregroundColor: colorScheme.onPrimary,
           backgroundColor: Colors.transparent,
@@ -167,7 +172,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(kBorderRadius),
           ),
           foregroundColor: colorScheme.onPrimary,
           backgroundColor: colorScheme.primary,
@@ -177,7 +182,7 @@ abstract class AppTheme {
         tileColor: colorScheme.primary,
         contentPadding: const EdgeInsets.symmetric(horizontal: 8),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(kBorderRadius),
         ),
       ),
       dialogTheme: DialogTheme(
