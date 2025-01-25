@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants.dart';
 import 'package:places/models/places_model.dart';
+import 'package:places/screens/map_screen.dart';
 import 'package:places/widgets/places_alert_dialogue.dart';
 
 class PlaceDetails extends StatelessWidget {
@@ -13,10 +14,21 @@ class PlaceDetails extends StatelessWidget {
   final Place currentPlace;
   final VoidCallback onDelete;
 
-  String get locationPreview {
+  String get locationPreviewURL {
     final lat = currentPlace.placeLocation.latitude;
     final lng = currentPlace.placeLocation.longitude;
     return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=18&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=AIzaSyCYfHmKomCigkW-1MCxKyuEMPgQPUbwN6M';
+  }
+
+  void _openMap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => MapScreen(
+          location: currentPlace.placeLocation,
+          isSelecting: false,
+        ),
+      ),
+    );
   }
 
   @override
@@ -96,13 +108,13 @@ class PlaceDetails extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 0,
+                    top: 0,
                     left: 0,
                     right: 0,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(kBorderRadius),
-                        bottomLeft: Radius.circular(kBorderRadius),
+                        topRight: Radius.circular(kBorderRadius),
+                        topLeft: Radius.circular(kBorderRadius),
                       ),
                       child: Container(
                         decoration: BoxDecoration(
@@ -119,7 +131,7 @@ class PlaceDetails extends StatelessWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 2, 8, 4),
+                          padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
                           child: Text(
                             currentPlace.placeTitle,
                             style: Theme.of(context)
@@ -144,22 +156,28 @@ class PlaceDetails extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 90,
-                      width: 90,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: kBorderThickness,
+                    InkWell(
+                      onTap: () {
+                        _openMap(context);
+                      },
+                      child: Container(
+                        height: 90,
+                        width: 90,
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: kBorderThickness,
+                          ),
+                          borderRadius: BorderRadius.circular(kBorderRadius),
                         ),
-                        borderRadius: BorderRadius.circular(kBorderRadius),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(kBorderRadius - 2),
-                        child: Image.network(
-                          locationPreview,
-                          fit: BoxFit.fitHeight,
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(kBorderRadius - 2),
+                          child: Image.network(
+                            locationPreviewURL,
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
                       ),
                     ),
